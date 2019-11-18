@@ -18,16 +18,8 @@ public class Token {
         return element;
     }
 
-    public void setElement(String element) {
-        this.element = element;
-    }
-
     public String getType() {
         return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public static final String DELIMITER = "Delimiter";
@@ -35,13 +27,12 @@ public class Token {
     public static final String IDENTIFIER = "Identifier";
     public static final String OPERATOR = "Operator";
     public static final String OPERATOR_NOISE = "Operator syntax noise";
-    //public static final String LITERAL = "Literal";
     public static final String LITERAL_CHARACTER = "Character literal";
     public static final String LITERAL_STRING = "String literal";
     public static final String LITERAL_MULTILINE_STRING = "Multiline string literal";
     public static final String LITERAL_NUMERIC = "Numeric literal";
 
-    public String toString(){
+    public String toString() {
         return "(" + type + "," + element + ")";
     }
 
@@ -56,7 +47,6 @@ public class Token {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(element, type);
     }
 }

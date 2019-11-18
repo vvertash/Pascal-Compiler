@@ -5,10 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Tokenizer {
-    private static List<Character> printableEscapeCharacters =
-            Arrays.asList('\b', '\t', '\n', '\f', '\r', '\"', '\'', '\\');
-    private static HashSet<Character> printableEscapeCharactersSet =
-            new HashSet<Character>(printableEscapeCharacters); // or '\777'
+    private static List<Character> printableEscapeCharacters = Arrays.asList('\b', '\t', '\n', '\f', '\r', '\"', '\'', '\\');
+    private static HashSet<Character> printableEscapeCharactersSet = new HashSet<Character>(printableEscapeCharacters); // or '\777'
     //A character with Unicode between 0 and 255 may also be represented by an octal escape,
     // i.e. a backslash '\' followed by a sequence of up to three octal characters.
 
@@ -18,7 +16,6 @@ public class Tokenizer {
 
     /**
      * constructor for the tokenizer
-     *
      * @param fileName - name of the file to parse
      * @throws FileNotFoundException
      */
@@ -33,7 +30,6 @@ public class Tokenizer {
 
     /**
      * tells if there is next token
-     *
      * @return true if there is next token
      */
     public boolean hasNext() {
@@ -44,8 +40,7 @@ public class Tokenizer {
      * deletes x symbols from the current line
      * where x equals to length of the Tokens element
      * if token is a multiline string literal
-     * it deletes only amout of symbols after last newline
-     *
+     * it deletes only amount of symbols after last newline
      * @param token
      */
     private void obrubatel(Token token) {
@@ -63,7 +58,6 @@ public class Tokenizer {
 
     /**
      * assumption: hasNext() is true
-     *
      * @return next Token from the input file
      * @throws Exception in case of unparsable input
      */
@@ -87,7 +81,6 @@ public class Tokenizer {
     /**
      * deletes whitespaces and comments from the beginning of the currentLine
      * also handles multiline comments (moves scanner in that case)
-     *
      * @return newline token if needed
      * @throws Exception in case of unclosed multiline comments
      */
@@ -148,7 +141,6 @@ public class Tokenizer {
      * if file is empty
      * there is no more token to read, sets hasNext to false
      * and then returns newline token
-     *
      * @return newline token if current line is processed
      */
     private Token checkEndOfString() {
@@ -166,7 +158,6 @@ public class Tokenizer {
     /**
      * main functions that parses tokens
      * assumption: current string is not empty
-     *
      * @return next token from the string
      * @throws Exception in case of unparsable data
      */
@@ -204,7 +195,5 @@ public class Tokenizer {
         }
         return null;
     }
-
-
 }
 

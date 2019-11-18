@@ -7,10 +7,10 @@ import java.util.List;
 public class IdentifierKeywordUtils {
 
     private static List<String> keywords = Arrays.asList("and", "begin", "boolean",
-            "break", "byte", "continue", "div", "do", "double", "else", "end",
-            "false", "if", "int64", "longint", "longword", "mod", "not",
-            "or", "qword", "repeat", "shl", "shortint", "shr", "single", "smallint", "then",
-            "true", "unit64", "until", "while", "word", "xor", "var", "string", "real", "for","to");
+            "break", "byte", "continue", "char", "div", "do", "double", "else", "end",
+            "false", "for", "if", "integer", "longint", "longword", "mod", "not",
+            "or", "qword", "real", "repeat", "shl", "shortint", "shr", "single", "smallint", "string", "then",
+            "to", "true", "var", "unit64", "until", "while", "word", "xor");
     private static HashSet<String> keywordsSet = new HashSet<String>(keywords);
 
     /**
@@ -22,8 +22,7 @@ public class IdentifierKeywordUtils {
      */
     public static boolean isIdentifierStart(String str) {
         char c = str.charAt(0);
-        return isPrintableChar(c)
-                && !(DelimiterUtils.isDelimiter(c) || Character.isDigit(c) || c == '$');
+        return isPrintableChar(c) && !(DelimiterUtils.isDelimiter(c) || Character.isDigit(c) || c == '$');
     }
 
     /**
@@ -32,21 +31,21 @@ public class IdentifierKeywordUtils {
      * @param c
      * @return true if this character can be in the middle of the identifier
      */
-    private static boolean isIdentifierMiddle(char c) { return isPrintableChar(c)
-            && !DelimiterUtils.isDelimiter(c);}
+    private static boolean isIdentifierMiddle(char c) {
+        return isPrintableChar(c) && !DelimiterUtils.isDelimiter(c);
+    }
 
     /**
-     * processes identifier from the begibning og the current line
-     * assumption: first character of the currentLine is an beginning of the identifier
+     * processes identifier from the begining of the current line
+     * assumption: first character of the currentLine is a beginning of the identifier
      * @param currentLine
      * @return Identifier or Keyword token
      */
     public static Token processIdentifier(String currentLine) {
-        String currentTokenBuffer = currentLine.substring(0,1);
+        String currentTokenBuffer = currentLine.substring(0, 1);
         int index = 1;
-        while (index < currentLine.length() &&
-                isIdentifierMiddle(currentLine.charAt(index)) ){
-            currentTokenBuffer = currentTokenBuffer+currentLine.charAt(index);
+        while (index < currentLine.length() && isIdentifierMiddle(currentLine.charAt(index))) {
+            currentTokenBuffer = currentTokenBuffer + currentLine.charAt(index);
             index++;
         }
         if (isKeyword(currentTokenBuffer)){
@@ -56,7 +55,7 @@ public class IdentifierKeywordUtils {
     }
 
     /**
-     * checks if identifier is an keywrod
+     * checks if identifier is a keyword
      * @param identifier
      * @return
      */
@@ -65,17 +64,17 @@ public class IdentifierKeywordUtils {
     }
 
     /**
-     * checks if beginning of the string is an strange identifier
+     * checks if beginning of the string is a strange identifier
      * @param str
      * @return
      */
-    public static boolean isStartOfStrangeIdentifier(char str){
+    public static boolean isStartOfStrangeIdentifier(char str) {
         return str == '`';
     }
 
     /**
      * processes strange identifier from the beginning of the string
-     * assumption: beginning of the current line string is an `
+     * assumption: beginning of the current line string is a `
      * @param currentLine
      * @return Identifier token
      * @throws Exception
@@ -84,16 +83,16 @@ public class IdentifierKeywordUtils {
         String currentTokenBuffer = currentLine.substring(0,1);
         int index = 1;
         if (currentLine.length() > 1 && isIdentifierMiddle(currentLine.charAt(index))){
-            currentTokenBuffer+=currentLine.charAt(index);
+            currentTokenBuffer += currentLine.charAt(index);
             index++;
         } else {
             throw new Exception("Incorrect strange identifier: " + currentTokenBuffer);
         }
-        while (true){
+        while (true) {
             if (currentLine.length() > index) {
                 currentTokenBuffer+=currentLine.charAt(index);
                 if(currentLine.charAt(index) == '`') {
-                    if (keywordsSet.contains(currentTokenBuffer.substring(1, currentTokenBuffer.length()-1))) {
+                    if (keywordsSet.contains(currentTokenBuffer.substring(1, currentTokenBuffer.length() - 1))) {
                         return new Token(currentTokenBuffer, Token.IDENTIFIER);
                     } else {
                         throw  new Exception("Incorrect strange identifier: " + currentTokenBuffer);
@@ -111,8 +110,8 @@ public class IdentifierKeywordUtils {
      * @param c
      * @return
      */
-    private static boolean isPrintableChar( char c ) {
-        Character.UnicodeBlock block = Character.UnicodeBlock.of( c );
+    private static boolean isPrintableChar(char c) {
+        Character.UnicodeBlock block = Character.UnicodeBlock.of(c);
         return (!Character.isISOControl(c)) &&
                 c != KeyEvent.CHAR_UNDEFINED &&
                 block != null &&

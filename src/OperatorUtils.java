@@ -15,10 +15,9 @@ public class OperatorUtils {
     private static HashSet<String> syntaxNoiseOperatorsSet = new HashSet<String>(syntaxNoiseOperators);
 
     /**
-     * processes operators
-     * from the beginning of the currentLine
+     * processes operators from the beginning of the currentLine
      * assumption: first symbol of the string is an Operator
-     * @param currentLine
+     * @param currentLine read input for recognizing next token
      * @return operator token
      */
     public static Token processOperator(String currentLine) {
@@ -26,7 +25,7 @@ public class OperatorUtils {
         if (currentLine.length() >= 2 && isOperator(currentLine.substring(0,2))){
             currentTokenBuffer = currentLine.substring(0,2);
             if(currentLine.length() >= 3 && isOperator(currentLine.substring(0,3))){
-                currentTokenBuffer = currentLine.substring(0,3);
+                currentTokenBuffer = currentLine.substring(0, 3);
             }
         }
         return new Token(currentTokenBuffer, Token.OPERATOR);
@@ -35,7 +34,7 @@ public class OperatorUtils {
     /**
      * checks if str is an operator
      * @param str
-     * @return
+     * @return if it is an operator
      */
     public static boolean isOperator(String str)  {
         return operatorsSet.contains(str);
@@ -45,24 +44,23 @@ public class OperatorUtils {
     /**
      * checks if string can be beginning of the operator
      * @param str
-     * @return
+     * @return if string can be beginning of the operator
      */
     public static boolean isBeginningOperator(String str)  {
-        boolean result;
         if (str.length() >= 2)
         {
-            return operatorsSet.contains(str.substring(0,1)) || operatorsSet.contains(str.substring(0,2));
+            return operatorsSet.contains(str.substring(0, 1)) || operatorsSet.contains(str.substring(0, 2));
         }
-        return operatorsSet.contains(str.substring(0,1));
+        return operatorsSet.contains(str.substring(0, 1));
     }
 
     /**
      * checks if beginning of the string is syntax noise operator
-     * @param currentLine
-     * @return
+     * @param currentLine read input for recognizing next token
+     * @return if beginning of the string is syntax noise operator
      */
     public static boolean isSyntaxNoiseOperator(String currentLine) {
-        if(currentLine.length()>=2 && syntaxNoiseOperatorsSet.contains(currentLine.substring(0,2))) {
+        if (currentLine.length() >= 2 && syntaxNoiseOperatorsSet.contains(currentLine.substring(0, 2))) {
             return true;
         }
         return false;
@@ -71,11 +69,11 @@ public class OperatorUtils {
     /**
      * assumption: two symbols at the beginning are syntax noise operator
      * processes syntax noise operator
-     * @param currentLine
+     * @param currentLine read input for recognizing next token
      * @return Operator token
      */
     public static Token processSyntaxNoiseOperator(String currentLine) {
-        return new Token(currentLine.substring(0,2), Token.OPERATOR_NOISE);
+        return new Token(currentLine.substring(0, 2), Token.OPERATOR_NOISE);
     }
 
 }

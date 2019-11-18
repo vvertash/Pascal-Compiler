@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         args = new String[1];
-        args[0] = "in.txt";
+        args[0] = "input.txt";
 
         if (args.length == 0) {
             System.out.println("ERROR: No input provided");

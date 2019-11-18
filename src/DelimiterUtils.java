@@ -19,12 +19,12 @@ public class DelimiterUtils {
     }
 
     /**
-     * checks if beginning of the string is an delimiter
+     * checks if beginning of the string is a delimiter
      * @param str character to check if it is delimiter
-     * @return
+     * @return true if a delimiter contains substring
      */
     public static boolean isDelimiter(String str) {
-        return delimiterPattern.contains(str.substring(0,1));
+        return delimiterPattern.contains(str.substring(0, 1));
     }
 
 }
