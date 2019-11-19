@@ -6,8 +6,8 @@ import java.util.List;
 
 public class IdentifierKeywordUtils {
 
-    private static List<String> keywords = Arrays.asList("and", "begin", "boolean",
-            "break", "byte", "continue", "char", "div", "do", "double", "else", "end",
+    private static List<String> keywords = Arrays.asList("and", "array", "begin", "boolean",
+            "break", "byte", "continue", "char", "div", "do", "downto", "double", "else", "end",
             "false", "for", "if", "integer", "longint", "longword", "mod", "not",
             "or", "qword", "real", "repeat", "shl", "shortint", "shr", "single", "smallint", "string", "then",
             "to", "true", "var", "unit64", "until", "while", "word", "xor");
@@ -16,13 +16,13 @@ public class IdentifierKeywordUtils {
     /**
      * checks if beginning of the string can be identifier
      * that means first symbol of the string is:
-     * a printable character, not a digit, not a delimiter and not a '$' (reserved symbol)
+     * a printable character, not a digit, not a delimiter
      * @param str
      * @return true if this character can be begging of the identifier
      */
     public static boolean isIdentifierStart(String str) {
         char c = str.charAt(0);
-        return isPrintableChar(c) && !(DelimiterUtils.isDelimiter(c) || Character.isDigit(c) || c == '$');
+        return isPrintableChar(c) && !(DelimiterUtils.isDelimiter(c) || Character.isDigit(c));
     }
 
     /**
@@ -32,7 +32,7 @@ public class IdentifierKeywordUtils {
      * @return true if this character can be in the middle of the identifier
      */
     private static boolean isIdentifierMiddle(char c) {
-        return isPrintableChar(c) && !DelimiterUtils.isDelimiter(c);
+        return isPrintableChar(c) && !DelimiterUtils.isDelimiter(c) && !OperatorUtils.isOperator(Character.toString(c));
     }
 
     /**

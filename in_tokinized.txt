@@ -1,1 +1,0 @@
-(Keyword,var)(Identifier,r)(Delimiter,:)(Keyword,real)(Delimiter,;)(Delimiter,\n)

@@ -36,7 +36,7 @@ public class NumericalTypeUtils {
         if(NumberUtils.isCreatable(currentTokenBuffer)) {
             return processNumericLiteral(currentTokenBuffer, currentLine, index);
         }else {
-            return new Token(currentTokenBuffer, Token.LITERAL_NUMERIC);
+            return new Token(currentTokenBuffer.substring(0, index), Token.LITERAL_NUMERIC);
         }
     }
 }

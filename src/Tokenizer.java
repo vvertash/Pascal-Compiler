@@ -23,6 +23,7 @@ public class Tokenizer {
         scanner = new Scanner(new FileReader(fileName));
         if (scanner.hasNext()) {
             currentLine = scanner.nextLine();
+            currentLine = currentLine.replace("\'","\"");
         } else {
             hasNext = false;
         }
@@ -100,6 +101,7 @@ public class Tokenizer {
                     hasNext = false;
                 } else {
                     currentLine = scanner.nextLine();
+                    currentLine = currentLine.replace("\'","\"");
                 }
                 return new Token("\\n", Token.DELIMITER);
             }
@@ -113,6 +115,7 @@ public class Tokenizer {
                     if (currentLine.length() == 0) {
                         if (scanner.hasNext()) {
                             currentLine = scanner.nextLine();
+                            currentLine = currentLine.replace("\'","\"");
                         } else {
                             throw new Exception("Unclosed multiline comment");
                         }
@@ -124,6 +127,7 @@ public class Tokenizer {
                 if (currentLine.length() == 0) {
                     if (scanner.hasNext()) {
                         currentLine = scanner.nextLine();
+                        currentLine = currentLine.replace("\'","\"");
                     } else {
                         hasNext = false;
                     }
@@ -149,6 +153,7 @@ public class Tokenizer {
                 hasNext = false;
             } else {
                 currentLine = scanner.nextLine();
+                currentLine = currentLine.replace("\'","\"");
             }
             return new Token("\\n", Token.DELIMITER);
         }
