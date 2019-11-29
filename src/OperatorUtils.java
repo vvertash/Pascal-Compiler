@@ -4,14 +4,14 @@ import java.util.List;
 
 public class OperatorUtils {
     private static List<String> operators =
-            Arrays.asList("+", "-", "*", "/", "//",
-                    ":=", "<=", ">=", "=", ">", "<", "<>",
-                    "%", "!", "&", "|", "~", "<<", ">>");
+            Arrays.asList("+", "-", "*", "/", "/=",
+                    ":=", "<=", ">=", "=", ">", "<",
+                    "%", "and", "not", "or", "xor");
     private static HashSet<String> operatorsSet = new HashSet<String>(operators);
 
     private static List<String> syntaxNoiseOperators =
-            Arrays.asList(":+", "::", "+:", "->", "<-", "=>", "<%", "=", "+=", "-=", "*=", "/=",
-                    "%=", "<<=", ">>=", "^=", "|=", "&=");
+            Arrays.asList(":+", "::", "+:", "->", "<-", "=>", "<%", "+=", "-=", "*=",
+                    "%=", "<<=", ">>=", "^=", "|=", "&=", "//", "<>", "!", "&", "|", "~", "<<", ">>");
     private static HashSet<String> syntaxNoiseOperatorsSet = new HashSet<String>(syntaxNoiseOperators);
 
     /**

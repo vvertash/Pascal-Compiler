@@ -1,17 +1,15 @@
-var a,b,c,d,x:real;
-begin
-     writeln('введите A,B,C');
-     readln( a,b,c );
-     d:=sqr(b)-4*a*c;
-     if d<0 then begin
-        writeln('действительных корней нет');
-     end else if d=0 then begin
-        x:=(-b)/2*a;
-        writeln('корень уравнения: ',x);
-     end else begin
-        x:=(-b+sqrt(d))/2*a;
-        writeln('1-й корень уравнения: ',x);
-        x:=(-b-sqrt(d))/2*a;
-        writeln('2-й корень уравнения: ',x);
-     end
-end.
+type int is integer
+type bool is boolean
+
+var variable_1 : int;
+var variable_2 : int;
+
+routine routine_1 ( var_a : variable_1, var_b : variable_2  ) is
+for var_a in true + true / true + true or true - true * true + true .. true - true / true - true or true + true * true + true loop type lol is RecordType end
+end
+
+type Array_2 is record var Identif : integer end
+
+var variable_3 is variable_1 + variable_2
+
+Program : var FirstProgram is RealLiteral + RealLiteral * RealLiteral - RealLiteral and RealLiteral + RealLiteral / RealLiteral - RealLiteral

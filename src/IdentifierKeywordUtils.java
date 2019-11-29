@@ -6,11 +6,9 @@ import java.util.List;
 
 public class IdentifierKeywordUtils {
 
-    private static List<String> keywords = Arrays.asList("and", "array", "begin", "boolean",
-            "break", "byte", "continue", "char", "div", "do", "downto", "double", "else", "end",
-            "false", "for", "if", "integer", "longint", "longword", "mod", "not",
-            "or", "qword", "real", "repeat", "shl", "shortint", "shr", "single", "smallint", "string", "then",
-            "to", "true", "var", "unit64", "until", "while", "word", "xor");
+    private static List<String> keywords = Arrays.asList("array", "boolean",
+            "else", "end", "false", "for", "if", "integer", "in", "is", "loop", "real",
+            "record", "reverse", "routine", "then", "type", "true", "var", "while");
     private static HashSet<String> keywordsSet = new HashSet<String>(keywords);
 
     /**

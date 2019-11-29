@@ -6,9 +6,7 @@ import java.util.Scanner;
 
 public class Tokenizer {
     private static List<Character> printableEscapeCharacters = Arrays.asList('\b', '\t', '\n', '\f', '\r', '\"', '\'', '\\');
-    private static HashSet<Character> printableEscapeCharactersSet = new HashSet<Character>(printableEscapeCharacters); // or '\777'
-    //A character with Unicode between 0 and 255 may also be represented by an octal escape,
-    // i.e. a backslash '\' followed by a sequence of up to three octal characters.
+    private static HashSet<Character> printableEscapeCharactersSet = new HashSet<Character>(printableEscapeCharacters);
 
     private String currentLine;
     private Scanner scanner;
